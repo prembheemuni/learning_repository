@@ -117,6 +117,9 @@ const sortedArrayASC = array1.sort((a,b)=>{a-b})
 const sortedArrayDSC = array1.sort((a,b)=>{b-a})
 
 // the callback computes a - b, if negative it places a,b, if positive it places b,a, if zero not changes
+
+// Creating array from iterable
+const formedArray = Array.from(new Set(arr))
  
 
 
