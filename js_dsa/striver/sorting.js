@@ -78,3 +78,45 @@ function intersectionDSC(arr){
 }
 
 console.log(intersectionDSC([6,4,5,1,3,2]))
+
+
+// BUBBLE SORT
+// IT selects adjacent elements and compare and swaps it will be continued till the end of the list.
+// The list will be sorted from the end to the start.
+// first loop will be starts from n to 0, to track the unsorted part
+
+
+function bubbleSortInc(arr){
+    const size = arr.length
+    for(let i=size-1; i>=0; i--){
+        for(j=0; j<i;j++){
+            if(arr[j] > arr[j+1]){
+                // swap logic 
+                [arr[j],arr[j+1]] = [arr[j+1],arr[j]]
+            }
+        }
+    }
+    
+    return arr;
+    
+}
+
+function bubbleSortDec(arr){
+    const size = arr.length;
+    for(let i=size-1; i>=0; i--){
+        for(let j=0; j<i; j++){
+            if(arr[j] < arr[j+1]){
+                // swap logic
+                 [arr[j],arr[j+1]] = [arr[j+1],arr[j]]
+            }
+        }
+    }
+    
+    return arr
+}
+
+console.log(bubbleSortDec([6,5,3,1,2,4]))
+
+
+
+
