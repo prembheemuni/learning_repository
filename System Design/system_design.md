@@ -5,6 +5,8 @@
 ## CAP Thorem :
 Cap Theorem tells us that in a event of network partition(when the communication between any two nodes fails in a distributed system). the system has to choose any two among the CONSISTENCY, AVAILABILITY , PARTIOTION TOLERENCE.
 
+Note : node means database replica and network partition means communication failure between distributed systems
+
 1. CONSITENCY : At any point of time at any node(database) the data should be same, the every read request at any node(main or read replica of a databse) shoud return most recent write data. the request takes time because it should update all database nodes because to make system consistent. 
 
 2. AVAILABILITY: The incoming request will always get response. may be its outdated data or a most recent data
