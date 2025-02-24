@@ -14,7 +14,7 @@ Note : node means database replica and network partition means communication fai
 3. PARTITION TOLERENCE : If communication between any node fails the other nodes should work as they are supposed to, either we can stut down the node untill the connection established or allow the node to provide the old data to the users.
 
 The Choice : 
-1. CA : Consistent and Available, if network partition happens between any two nodes, the all transactions were stopped and no updations will happen in any of the nodes, example: Bank Transactions
+1. CA : Consistent and Available, if network partition happens between any two nodes, example: Bank Transactions
 2. CP : Consistent and Partition tolerence, if network partition happens, the corresponding node will be shut down, because to make it consistent, and availability fails here because the users who connected to the node will receive errors
 3. AP : Availability and Partition Tolerence , if network partition happens, the corresponding node will serve the older data to make it available, here consistency is failing.
    
