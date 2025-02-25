@@ -62,3 +62,16 @@ Steps:
 - add shards
 - enable sharding on database
 - shard collection with unique key
+
+
+
+
+
+Revised steps:
+
+- Create directories for cs1, cs2, cs3, shard1 shard2
+- Start config servers as replica set
+- Initialise config server replica set
+- verify status as rs.status
+- start the mongos router
+- Start the shard router
