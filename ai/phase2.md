@@ -3,85 +3,75 @@
 ## Month 4: OpenAI API & Prompt Engineering Basics
 
 ### OpenAI Python SDK
-- [ ] Install and configure the `openai` Python package
-- [ ] Set up API keys securely using environment variables
-- [ ] Use the **Chat API** (`gpt-3.5`, `gpt-4`) for assistant-style conversations
-- [ ] Learn the difference between `Completion` API and `ChatCompletion` API
+- [ ] Install and use the `openai` Python SDK to interact with GPT models easily.
+- [ ] Secure your API key using environment variables and avoid hardcoding sensitive info.
 
 ### Roles & Message Format
-- [ ] Understand system, user, and assistant roles
-- [ ] Learn how to structure chat history
-- [ ] Build multi-turn conversation history to maintain context
+- [ ] Learn how to use `system`, `user`, and `assistant` messages to guide the conversation.
+- [ ] Maintaining correct roles improves instruction following and keeps context clean.
 
 ### Prompt Engineering
-- [ ] Try **zero-shot prompts** (no examples)
-- [ ] Practice **few-shot prompting** (add examples to guide output)
-- [ ] Use **chain-of-thought** prompts for step-by-step reasoning
-- [ ] Experiment with temperature, max tokens, and top_p
+- [ ] Zero-shot prompting means giving no examples, relying on model’s general ability.
+- [ ] Few-shot prompting provides examples within the prompt to steer GPT's output format and tone.
+- [ ] Chain-of-thought prompting encourages GPT to show its reasoning steps clearly.
+- [ ] Adjust temperature, max tokens, and top_p to control creativity and output length.
 
 ### Function Calling (Tool Use via GPT)
-- [ ] Define structured functions (e.g., `get_weather(city)`)
-- [ ] Use GPT to decide when and how to call functions
-- [ ] Handle function call responses and feed back into the conversation
+- [ ] Let GPT decide when to call structured backend functions like `get_weather(city)`.
+- [ ] After the tool is called, feed the result back into GPT to continue the conversation.
 
 ### Streaming Responses
-- [ ] Implement token-by-token streaming using `stream=True`
-- [ ] Use `Server-Sent Events (SSE)` or WebSockets to push streamed content to the frontend
+- [ ] Instead of waiting for a full response, use streaming to get tokens in real-time.
+- [ ] Implement token streaming with `stream=True` and serve it with SSE or WebSockets in FastAPI.
 
 ---
 
 ## Month 5: GPT Wrapper Design & Usage Optimization
 
 ### GPT Wrapper Services
-- [ ] Create a Python class `GPTService` to abstract prompt calls
-- [ ] Add logging, retry, timeout, and error handling
-- [ ] Track cost using token counting (`tiktoken`, `openai` usage API)
+- [ ] Create a Python service class that wraps prompt calls with consistent logic and retries.
+- [ ] Centralize token usage tracking, error handling, and model versioning in one place.
 
 ### Output Formatting
-- [ ] Parse structured outputs (JSON, lists, tables)
-- [ ] Validate and format LLM output before using downstream
+- [ ] Use system prompts or regex to ensure output is always structured (e.g., JSON or markdown).
+- [ ] Validate GPT output before using it in downstream applications or UI.
 
 ### Prompt Logging and Versioning
-- [ ] Store prompt-response pairs in a database or file
-- [ ] Version prompts and outputs for testing and improvement
+- [ ] Log all prompt/response pairs into a file or database for testing and iteration.
+- [ ] Maintain versions of prompts so you can test improvements over time.
 
 ### Rate Limiting and Throttling
-- [ ] Respect OpenAI rate limits (RPM, TPM)
-- [ ] Add retry/backoff for API failures
+- [ ] Respect OpenAI's rate limits to avoid API rejections or bans.
+- [ ] Use `tenacity` or exponential backoff methods to retry failed calls gracefully.
 
 ### Multi-model Support
-- [ ] Support both GPT-3.5 and GPT-4 in your wrapper
-- [ ] Add logic to fallback to cheaper model if appropriate
+- [ ] Add logic to switch between `gpt-3.5` and `gpt-4` based on task or user tier.
+- [ ] Lower-priority requests can default to cheaper models to reduce cost.
 
 ---
 
 ## Month 6: Build GPT-Powered Projects
 
 ### Project 1: Email Writing Assistant
-- [ ] Accept input like “write a follow-up email to HR”
-- [ ] Use few-shot prompt templates for tone/style
-- [ ] Allow response regeneration with different tones
+- [ ] Take user input (like intent and tone) and generate emails with GPT in a specific format.
+- [ ] Allow tone/style toggles like “professional,” “friendly,” or “apologetic” via prompt variables.
 
 ### Project 2: Article Summarizer API
-- [ ] Input: paste an article or link
-- [ ] Output: TL;DR summary, highlights, quote extraction
-- [ ] Stream response to the frontend
+- [ ] Paste an article and get a summary, list of key points, and important quotes.
+- [ ] Use streaming to show the summary in real-time as it’s being generated.
 
 ### Project 3: Function Calling Agent
-- [ ] Ask questions like “What’s the weather in Tokyo tomorrow?”
-- [ ] GPT calls a backend function `get_weather(location)`
-- [ ] Merges weather result back into conversation
-- [ ] Logs both conversation and function usage
+- [ ] GPT parses a user's request, calls the appropriate backend function, and continues the chat.
+- [ ] For example, GPT sees “Weather in Tokyo” → calls `get_weather()` → includes result in response.
 
-### Bonus (Optional):
-- [ ] Add user auth and usage tracking
-- [ ] Use FastAPI to expose your GPT wrappers as public/private APIs
-- [ ] Dockerize the app for deployment
+### Bonus (Optional)
+- [ ] Add user authentication and quota limits to control usage.
+- [ ] Wrap your GPT tools as a FastAPI service and Dockerize for deployment on cloud/VPS.
 
 ---
 
 ## Resources
 - [ ] OpenAI Python SDK Docs: https://platform.openai.com/docs
 - [ ] Prompt Engineering Guide: https://github.com/dair-ai/Prompt-Engineering-Guide
-- [ ] tiktoken for token counting: https://github.com/openai/tiktoken
-- [ ] ChatGPT Function Calling Examples on GitHub
+- [ ] Token counter: https://github.com/openai/tiktoken
+- [ ] GitHub examples for streaming, function calling, and prompt chaining
